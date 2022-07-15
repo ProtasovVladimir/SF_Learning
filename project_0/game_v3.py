@@ -1,16 +1,19 @@
+"""Игра угадай число
+Компьютер сам загадывает и сам угадывает число
+"""
 import numpy as np
 def random_predict(number) :
-    number= np.random.randint(1, 101)
+    number= np.random.randint(1, 101) # загадываем случайное число
     count = 0
-    border_min = 0
-    border_max = 101
+    border_min = 0 # Задаём нижнюю 
+    border_max = 101 # и верхнюю границы диапазона поиска
     while True:
         count +=1
-        predict_num = (border_min + border_max) // 2
-        if predict_num > number:
-            border_max = predict_num
-        elif predict_num < number:   
-            border_min = predict_num
+        predict_num = (border_min + border_max) // 2 # вычисляем число,которое нужно угадать 
+        if predict_num > number:      # 
+            border_max = predict_num  # Сужаем диапазон поиска
+        elif predict_num < number:    #
+            border_min = predict_num  # Сужаем диапазон поиска
         else:
             return count
 print(f'Количество попыток: {random_predict(100)}')
